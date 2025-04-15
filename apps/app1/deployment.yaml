@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: app1-deployment
-  namespace: demo-applicationset  
+  namespace: argocd
 spec:
   replicas: 1
   selector:
