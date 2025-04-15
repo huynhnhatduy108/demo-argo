@@ -2,19 +2,19 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: app1-deployment
-  namespace: argocd  
+  namespace: demo-applicationset  
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: app1
+      app: app1  
   template:
     metadata:
       labels:
-        app: app1
+        app: app1  
     spec:
       containers:
         - name: app1
-          image: nginx:latest  # Dùng Nginx image
+          image: nginx:latest
           ports:
-            - containerPort: 80  # Port mặc định của Nginx
+            - containerPort: 80
