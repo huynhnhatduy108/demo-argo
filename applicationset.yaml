@@ -2,14 +2,14 @@ apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
   name: my-argocd-demo-applicationset
+  namespace: argocd
 spec:
   generators:
     - git:
         repoURL: https://github.com/huynhnhatduy108/demo-argo.git
         revision: HEAD
         directories:
-          - path: apps/app1  # Chỉ định thư mục của app1
-          - path: apps/app2  # Chỉ định thư mục của app2
+          - path: apps/app1
   template:
     metadata:
       name: '{{path.basename}}-application' 
@@ -21,7 +21,7 @@ spec:
         path: '{{path}}' 
       destination:
         server: 'https://kubernetes.default.svc'
-        namespace: argocd  
+        namespace: demo-applicationset  
       syncPolicy:
         automated:
           prune: true  
