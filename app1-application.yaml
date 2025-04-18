@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: https://github.com/huynhnhatduy108/demo-argo.git
     targetRevision: HEAD
-    path: apps/app1
+    path: apps-test/app1
   destination:
     server: https://kubernetes.default.svc
     namespace: app1-namespace

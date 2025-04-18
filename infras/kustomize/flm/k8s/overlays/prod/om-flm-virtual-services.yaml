@@ -1,0 +1,28 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: om-flm-virtual-services
+spec:
+  gateways:
+    - ingress-istio/chorus-gateway
+  hosts:
+    - "chorus.one-line.com"
+  http:
+    # For FLM BFF
+    - match:
+        - uri:
+            prefix: /flm/bff
+      route:
+        - destination:
+            port:
+              number: 5000
+            host: om-flm-bff-service.flm-prod.svc.cluster.local
+    # For FLM Frontend
+    - match:
+        - uri:
+            prefix: /flm
+      route:
+        - destination:
+            port:
+              number: 3000
+            host: om-flm-frontend-service.flm-prod.svc.cluster.local

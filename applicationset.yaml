@@ -9,7 +9,7 @@ spec:
         repoURL: https://github.com/huynhnhatduy108/demo-argo.git
         revision: HEAD
         directories:
-          - path: apps/app1
+          - path: apps-test/app1
   template:
     metadata:
       name: '{{path.basename}}-application' 

@@ -1,0 +1,25 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: om-flm-frontend-dev
+spec:
+  generators:
+    - git:
+        repoURL: https://github.com/ocean-network-express/om-flm-config.git
+        revision: HEAD
+        directories:
+          - path: apps/om-flm-frontend/k8s/overlays/dev
+  template:
+    metadata:
+      name: om-flm-frontend-{{path.basename}}
+    spec:
+      project: om-flm
+      source:
+        repoURL: https://github.com/ocean-network-express/om-flm-config.git
+        targetRevision: HEAD
+        path: "{{path}}"
+      destination:
+        server: https://34.87.70.201
+        namespace: flm-dev
+      syncPolicy:
+        automated: { prune: true }

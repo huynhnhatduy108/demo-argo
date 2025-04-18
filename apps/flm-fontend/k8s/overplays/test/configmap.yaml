@@ -1,0 +1,25 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: om-flm-bff-configmap
+data:
+  APP_PORT: "5000"
+  ENABLE_PLAYGROUND: "true"
+  GRPC_HOST_VESSEL: "om-flm-vessel-management-service-svc.flm-dev.svc.cluster.local:9000"
+  GRPC_HOST_SETTING: "om-flm-setting-service-svc.flm-dev.svc.cluster.local:9001"
+  GRPC_HOST_POST_FIXTURE: "om-flm-post-fixture-service-svc.flm-dev.svc.cluster.local:9002"
+  GCP_BUCKET_ID: "sea1-dev-chorus-flm-storage"
+  GCP_SIGN_URL_EXPIRED_TIME: "1500000"
+  GRAPHQL_UPLOAD_MAX_FILES: "1"
+  GRAPHQL_UPLOAD_MAX_SIZE: "25"
+  VESSEL_TEMPLATE_FILENAME: "Import_vessel_template.xlsx"
+  GOOGLE_BUCKET_TEMPLATE_LOCATION: "templates"
+  MDM_GRPC_HOST: "mdm-hub-dev-wpsqj2n4yq-as.a.run.app"
+  ALLOW_DOMAINS: "https://localhost:3000,https://chorus-dev.one-line.com"
+  BASE_URL_OPA_API: "http://localhost:8181/v1"
+
+# LaunchDarkly
+  LAUNCHDARKLY_FLM_VESSEL_SPEC: "flm-vessel-specification"
+  LAUNCHDARKLY_FLM_DOCUMENT: "flm-vessel-document"
+  LAUNCHDARKLY_FLM_FLEET_LIST: "flm-one-fleet-list"
+  LAUNCHDARKLY_FLM_3767: "FLM-3767"
