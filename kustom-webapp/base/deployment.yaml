@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: mywebapp
+  name: okm2-backend
 spec:
   replicas: 1
   template:
@@ -21,17 +21,21 @@ spec:
           limits:
             memory: "128Mi"
             cpu: "100m"
+
+
+
+            
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: anotherapp
+  name: okm2-frontend
 spec:
   replicas: 1
   template:
     spec:
       containers:
-      - name: okm2-fontend
+      - name: okm2-frontend
         image: huynhnhatduy108/react-docker:latest
         ports:
         - containerPort: 8080

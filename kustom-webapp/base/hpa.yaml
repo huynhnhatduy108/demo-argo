@@ -1,13 +1,14 @@
+# HPA  for backend
 apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
-  name: mywebapp-hpa
+  name: hpa-okm2-backend
 spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: mywebapp
-  minReplicas: 3
+    name: okm2-backend
+  minReplicas: 1
   maxReplicas: 5
   metrics:
   - type: Resource
@@ -16,3 +17,23 @@ spec:
       target:
         type: Utilization
         averageUtilization: 50
+---
+# HPA for Frontend
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: hpa-okm2-frontend
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: okm2-frontend
+  minReplicas: 1
+  maxReplicas: 4
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: 60
