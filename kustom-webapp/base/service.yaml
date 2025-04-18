@@ -1,10 +1,27 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: mywebapp
+  name: okm2-backend-svc
 spec:
+  selector:
+    app: okm2-backend
   ports:
-  - port: 80
-    protocol: TCP
-    name: flask
-  type: NodePort
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+  type: ClusterIP
+
+  
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: okm2-frontend-svc
+spec:
+  selector:
+    app: okm2-frontend
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+  type: ClusterIP
