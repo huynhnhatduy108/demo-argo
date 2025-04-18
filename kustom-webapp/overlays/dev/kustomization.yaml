@@ -3,9 +3,11 @@ kind: Kustomization
 
 resources:
 - ../../base
+- ./hpa.yaml
 
 patches:
-- path: ./replicas.yaml
+# - path: ./replicas.yaml
+
 
 configMapGenerator:
 - name: mykustom-map
