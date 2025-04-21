@@ -33,9 +33,9 @@ spec:
     spec:
       containers:
       - name: okm2-frontend
-        image: huynhnhatduy108/react-docker:latest
+        image: nginx:latest
         ports:
-        - containerPort: 8080
+        - containerPort: 80
         envFrom:
         - configMapRef:
             name: mykustom-map
