@@ -1,0 +1,43 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: okm2-backend-vts
+spec:
+  hosts:
+  - "okm2-backend"
+  gateways:
+  - okm2-gateway
+  http:
+  - match:
+    - uri:
+        prefix: /api
+    route:
+    - destination:
+        host: okm2-backend-svc
+        subset: v1
+        port:
+          number: 80
+
+---
+
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: okm2-frontend-vts
+spec:
+  hosts:
+  - "okm2-frontend"
+  gateways:
+  - okm2-gateway
+  http:
+  - match:
+    - uri:
+        prefix: /frontend
+    route:
+    - destination:
+        host: okm2-frontend-svc
+        subset: v1
+        port:
+          number: 8000
+
+

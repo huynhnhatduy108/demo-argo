@@ -3,7 +3,7 @@ kind: Kustomization
 
 namespace: flm-dev
 
-commonLabels:
+labels:
   app: om-flm-bff
   
 resources:
