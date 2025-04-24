@@ -2,28 +2,30 @@ apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
   name: om-bkm2-ui-dev
-  namespace: dev1              
 spec:
   generators:
     - git:
         repoURL: https://github.com/huynhnhatduy108/demo-argo.git
         revision: HEAD
-        directories:
-          - path: apps/om-bkm2-ui/k8s/overlays/dev
+        files:
+          - path: apps/om-bkm2-ui/k8s/overlays/dev/kustomization.yaml
   template:
     metadata:
-      name: om-bkm2-ui-dev
+      # sẽ thành om-bkm2-ui-kustomization
+      name: om-bkm2-ui-{{files.basename}}
     spec:
       project: om-bkm2
       source:
         repoURL: https://github.com/huynhnhatduy108/demo-argo.git
         targetRevision: HEAD
-        path: apps/om-bkm2-ui/k8s/overlays/dev
+        path: "{{files.path}}"
       destination:
         server: https://kubernetes.default.svc
-        # namespace: bkm2-dev
+        namespace: bkm2-dev
       syncPolicy:
-        automated: { prune: true }
+        automated:
+          prune: true
+
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
