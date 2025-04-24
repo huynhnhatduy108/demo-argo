@@ -1,0 +1,13 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: bkm2-uat
+
+resources:
+- configmap.yml
+- ../../base
+- service-account.yaml
+# - path: https://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@raw.githubusercontent.com/ocean-network-express/om-com-config/main/infras/kustomize/abac/k8s/overlays/test/deployment-patch.yaml
+patches:
+- path: ../../../../../../../../common/om-com-config.git/infras/kustomize/abac/k8s/overlays/test/deployment-patch.yaml
+  target:
+    kind: Deployment

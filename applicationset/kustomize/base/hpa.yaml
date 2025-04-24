@@ -20,17 +20,17 @@ spec:
         averageUtilization: 50
 
 
-# HPA for okm2-frontend
+# HPA for okm2-ui
 ---
 apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
-  name: okm2-frontend-hpa
+  name: okm2-ui-hpa
 spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: okm2-frontend
+    name: okm2-ui
   minReplicas: 2
   maxReplicas: 5
   metrics:

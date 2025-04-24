@@ -1,0 +1,8 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: om-bkm2-dsd-ui
+spec:
+  template:
+    spec:
+      serviceAccount: om-bkm2-ui-service-account

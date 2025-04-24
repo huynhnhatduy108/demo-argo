@@ -16,10 +16,10 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: okm2-frontend-svc
+  name: okm2-ui-svc
 spec:
   selector:
-    app: okm2-frontend
+    app: okm2-ui
   ports:
   - protocol: TCP
     port: 80

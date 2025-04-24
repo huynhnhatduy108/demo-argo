@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: om-bkm2-dsd-ui
+spec:
+  template:
+    # metadata:
+    # labels:
+    #   sidecar.istio.io/inject: "true"
+    spec:
+      containers:
+        - name: om-bkm2-dsd-ui
+          image: om-bkm2-dsd-ui-image
+          resources:
+            requests:
+              cpu: "150m"
+              memory: "512Mi"
+            limits:
+              cpu: "250m"
+              memory: "1Gi"

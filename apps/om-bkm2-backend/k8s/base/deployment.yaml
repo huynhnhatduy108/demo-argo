@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: om-bkm2-bff-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: om-bkm2-bff
+  template:
+    metadata:
+      labels:
+        app: om-bkm2-bff
+    spec:
+      nodeSelector:
+        cloud.google.com/compute-class: Scale-Out
+      serviceAccount: om-bkm2-bff-ksa
+      containers:
+        - name: om-bkm2-bff
+          image: om-bkm2-bff-image
+          imagePullPolicy: Always
+          envFrom:
+            - configMapRef:
+                name: om-bkm2-bff-configmap
+            - secretRef:
+                name: om-bkm2-bff-secret
+          ports:
+            - name: http
+              protocol: TCP
+              containerPort: 5000
+          resources:
+            requests:
+              memory: "500Mi"
+              cpu: "500m"

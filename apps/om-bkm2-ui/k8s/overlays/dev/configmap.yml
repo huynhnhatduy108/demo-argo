@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: om-bkm2-dsd-ui-env-var
+data:
+  NODE_ENV: production
+  HOST: 0.0.0.0
+  PORT: "3000"
+  ENV: dev
+  NEXT_PUBLIC_GRAPHQL_HOST: /bkm2/bff/graphql
+  NEXT_PUBLIC_GRAPHQL_URL: /bkm2/bff/graphql
+  OM_AUTH_URL: http://localhost:3000/api/auth
+  OM_LOGIN_PATH: /login
+  OM_DEFAULT_REDIRECT_PATH: /
+  OM_AUTH_SECRET: fa23f0b692f3acacead76ce66d84eb4f
+  OM_SAML_METADATA_FILE_PATH: certs/metadata.txt
+  OM_SAML_AUDIENCE: 0.0.0.0:3000
+  OM_MAX_AGE: "0"
+  NEXT_PUBLIC_APP_HOST: https://chorus-dev.one-line.com/bkm2

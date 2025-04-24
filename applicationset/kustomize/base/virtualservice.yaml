@@ -23,7 +23,7 @@ spec:
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
 metadata:
-  name: okm2-frontend-vts
+  name: okm2-ui-vts
 spec:
   hosts:
   - "*"
@@ -32,10 +32,10 @@ spec:
   http:
   - match:
     - uri:
-        prefix: /frontend
+        prefix: /ui
     route:
     - destination:
-        host: okm2-frontend-svc
+        host: okm2-ui-svc
         subset: v1
         port:
           number: 80
