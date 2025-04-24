@@ -1,30 +1,20 @@
 apiVersion: argoproj.io/v1alpha1
-kind: ApplicationSet
+kind: Application
 metadata:
   name: om-bkm2-ui-dev
+  namespace: argocd               # namespace ArgoCD của bạn
 spec:
-  generators:
-    - git:
-        repoURL: https://github.com/huynhnhatduy108/demo-argo.git
-        revision: HEAD
-        files:
-          - path: apps/om-bkm2-ui/k8s/overlays/dev/kustomization.yaml
-  template:
-    metadata:
-      # sẽ thành om-bkm2-ui-kustomization
-      name: om-bkm2-ui-{{files.basename}}
-    spec:
-      project: om-bkm2
-      source:
-        repoURL: https://github.com/huynhnhatduy108/demo-argo.git
-        targetRevision: HEAD
-        path: apps/om-bkm2-ui/k8s/overlays/dev/kustomization.yaml
-      destination:
-        server: https://kubernetes.default.svc
-        # namespace: bkm2-dev
-      syncPolicy:
-        automated:
-          prune: true
+  project: om-bkm2
+  source:
+    repoURL: https://github.com/huynhnhatduy108/demo-argo.git
+    targetRevision: HEAD
+    path: apps/om-bkm2-ui/k8s/overlays/dev
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: bkm2-dev
+  syncPolicy:
+    automated:
+      prune: true
 
 ---
 apiVersion: argoproj.io/v1alpha1
