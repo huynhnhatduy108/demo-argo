@@ -20,7 +20,7 @@ spec:
           image: nginx:latest
           ports:
           - containerPort: 80
-              name: container-port
+            name: container-port
           envFrom:
             - configMapRef:
                 name: om-bkm2-dsd-ui-env-var

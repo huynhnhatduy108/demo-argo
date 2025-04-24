@@ -3,4 +3,4 @@ kind: Kustomization
 namespace: flm-prod
 
 resources:
-  - https://github.com/ocean-network-express/om-com-config.git/infras/kustomize/abac/k8s/overlays/prod
+  - https://github.com/huynhnhatduy108/demo-argo.git/infras/kustomize/abac/k8s/overlays/prod

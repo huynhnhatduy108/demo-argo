@@ -1,0 +1,53 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: om-bkm2-infras-git-test
+spec:
+  generators:
+    - git:
+        repoURL: https://github.com/huynhnhatduy108/demo-argo.git
+        revision: HEAD
+        directories:
+          - path: infras/kustomize/bkm2/k8s/overlays/test
+  template:
+    metadata:
+      name: om-bkm2-infras-{{path.basename}}
+    spec:
+      project: om-bkm2
+      source:
+        repoURL: https://github.com/huynhnhatduy108/demo-argo.git
+        targetRevision: HEAD
+        path: "{{path}}"
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: bkm2-test
+      syncPolicy:
+        automated: { prune: true }
+
+
+---
+ apiVersion: argoproj.io/v1alpha1
+ kind: ApplicationSet
+ metadata:
+   name: om-bkm2-infras-abac-git-test
+ spec:
+   generators:
+     - git:
+         repoURL: https://github.com/huynhnhatduy108/demo-argo.git
+         revision: HEAD
+         directories:
+           - path: infras/kustomize/abac/k8s/overlays/test
+   template:
+     metadata:
+       name: om-abac-infras-{{path.basename}}
+     spec:
+       project: om-bkm2
+       source:
+         repoURL: https://github.com/huynhnhatduy108/demo-argo.git
+         targetRevision: HEAD
+         path: "{{path}}"
+       destination:
+        server: https://kubernetes.default.svc
+        namespace: bkm2-test
+       syncPolicy:
+         automated: { prune: true }

@@ -1,0 +1,51 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: om-bkm2-ui-stage
+spec:
+  generators:
+    - git:
+        repoURL: https://github.com/huynhnhatduy108/demo-argo.git
+        revision: HEAD
+        directories:
+          - path: apps/om-bkm2-ui/k8s/overlays/stage
+  template:
+    metadata:
+      name: om-bkm2-ui-stage
+    spec:
+      project: om-bkm2
+      source:
+        repoURL: https://github.com/huynhnhatduy108/demo-argo.git
+        targetRevision: HEAD
+        path: "{{path}}"
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: bkm2-stage
+      syncPolicy:
+        automated: { prune: true }
+---
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: om-bkm2-backend-stage
+spec:
+  generators:
+    - git:
+        repoURL: https://github.com/huynhnhatduy108/demo-argo.git
+        revision: HEAD
+        directories:
+          - path: apps/om-bkm2-backend/k8s/overlays/stage
+  template:
+    metadata:
+      name: om-bkm2-backend-stage
+    spec:
+      project: om-bkm2
+      source:
+        repoURL: https://github.com/huynhnhatduy108/demo-argo.git
+        targetRevision: HEAD
+        path: "{{path}}"
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: bkm2-stage
+      syncPolicy:
+        automated: { prune: true }

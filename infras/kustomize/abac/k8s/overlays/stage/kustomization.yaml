@@ -3,4 +3,4 @@ kind: Kustomization
 namespace: flm-stage
 
 resources:
-- https://github.com/ocean-network-express/om-com-config.git/infras/kustomize/abac/k8s/overlays/stage
+- https://github.com/huynhnhatduy108/demo-argo.git/infras/kustomize/abac/k8s/overlays/stage
