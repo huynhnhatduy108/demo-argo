@@ -1,0 +1,26 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: om-bkm2-virtual-services
+spec:
+  gateways:
+    - ingress-istio/chorus-stage-gateway
+  hosts:
+    - "chorus-stage.one-line.com"
+  http:
+    - match:
+        - uri:
+            prefix: /bkm2/bff/graphql
+      route:
+        - destination:
+            port:
+              number: 80
+            host: om-bkm2-dsd-bff
+    - match:
+        - uri:
+            prefix: /bkm2
+      route:
+        - destination:
+            port:
+              number: 80
+            host: om-bkm2-dsd-ui

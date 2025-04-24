@@ -1,0 +1,21 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: om-bkm2-dsd-ui
+spec:
+  type: ClusterIP
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: om-bkm2-dsd-bff
+spec:
+  type: ClusterIP
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 3000
