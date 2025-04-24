@@ -4,10 +4,14 @@ kind: Kustomization
 resources:
 - ../../base
 
-patches:
 # - path: ./replicas.yaml
 
 
 configMapGenerator:
-- name: mykustom-map
-  env: config.properties
+- envs:
+  - config.properties
+  name: mykustom-map
+images:
+- name: nginx
+  newName: juanje/angular-template
+  newTag: latest
