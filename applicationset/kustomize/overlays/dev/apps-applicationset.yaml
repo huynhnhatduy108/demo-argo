@@ -21,7 +21,7 @@ spec:
         path: "{{files.path}}"
       destination:
         server: https://kubernetes.default.svc
-        namespace: bkm2-dev
+        # namespace: bkm2-dev
       syncPolicy:
         automated:
           prune: true
